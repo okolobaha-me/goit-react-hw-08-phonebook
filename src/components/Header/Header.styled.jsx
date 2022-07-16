@@ -1,9 +1,15 @@
-import { Box } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 
 export const Head = ({ children }) => {
   return (
-    <Box as={'header'} bgColor={'red'}>
+    <Flex
+      as={'header'}
+      p={'15px'}
+      borderBottom={'1px solid white'}
+      color={'white'}
+      justifyContent={'space-between'}
+    >
       {children}
-    </Box>
+    </Flex>
   );
 };
