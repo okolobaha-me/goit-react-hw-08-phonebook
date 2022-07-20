@@ -8,6 +8,7 @@ export const filterSlice = createSlice({
       state.value = action.payload;
     },
   },
+  extraReducers: {},
 });
 
 export const { setFilter } = filterSlice.actions;
