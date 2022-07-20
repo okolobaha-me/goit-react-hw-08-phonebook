@@ -4,7 +4,7 @@ export const NoContactsWarn = ({ children }) => {
   return (
     <Heading
       as="h2"
-      size="lg"
+      size="md"
       noOfLines={1}
       color={'white'}
       textAlign={'center'}
