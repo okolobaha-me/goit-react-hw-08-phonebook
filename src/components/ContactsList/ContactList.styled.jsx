@@ -1,5 +1,9 @@
-import {List} from '@chakra-ui/react';
+import { List } from '@chakra-ui/react';
 
 export const Contacts = ({ children }) => {
-  return <List color={'#ffffff'}>{children}</List>;
+  return (
+    <List color={'#ffffff'} p={'0 40px'}>
+      {children}
+    </List>
+  );
 };
