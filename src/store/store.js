@@ -11,13 +11,15 @@ import {
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import { userSlice } from './user/userSlice';
+import { contactsSlice } from './contacts/contactsSlice';
+import { filterSlice } from './filter/filterSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
-  }),
+  }).concat(contactsSlice.middleware),
 ];
 
 const userPersistConfig = {
@@ -29,6 +31,8 @@ const userPersistConfig = {
 export const store = configureStore({
   reducer: {
     user: persistReducer(userPersistConfig, userSlice.reducer),
+    [contactsSlice.reducerPath]: contactsSlice.reducer,
+    filter: filterSlice.reducer,
   },
   middleware,
 });
