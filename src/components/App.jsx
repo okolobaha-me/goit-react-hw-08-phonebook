@@ -1,15 +1,15 @@
-import { Navigate, Route, Routes } from 'react-router';
-import { Layout } from './Layout/Layout';
-import { SignUp } from '../Pages/SignUp/SignUp';
-import { LogIn } from '../Pages/LogIn/LogIn';
-import { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getIsLoggedIn, getUserToken } from '../store/user/userSelectors';
-import { tokenOptions } from '../service/API';
-import { refresh } from '../store/user/userActions';
-import { PublicRoute } from './PublicRoute';
-import { PrivateRoute } from './PrivateRoute';
-import { Contacts } from '../Pages/Contacts/Contacts';
+import {Navigate, Route, Routes} from 'react-router';
+import {Layout} from './Layout/Layout';
+import {SignUp} from '../Pages/SignUp/SignUp';
+import {LogIn} from '../Pages/LogIn/LogIn';
+import {useEffect, useRef} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {getIsLoggedIn, getUserToken} from '../store/user/userSelectors';
+import {tokenOptions} from '../service/API';
+import {refresh} from '../store/user/userActions';
+import {PublicRoute} from './PublicRoute';
+import {PrivateRoute} from './PrivateRoute';
+import {Contacts} from '../Pages/Contacts/Contacts';
 
 export const App = () => {
   const isFirstLoad = useRef(true);
@@ -26,7 +26,7 @@ export const App = () => {
       tokenOptions.set(token);
       dispatch(refresh());
     }
-  }, []);
+  }, [dispatch, token]);
 
   return (
     <Routes>

@@ -1,13 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { refresh } from '../user/userActions';
 
-export const loadingStatus = createSlice({
-  name: 'filter',
-  initialState: { value: '' },
-  reducers: {
-    setFilter(state, action) {
-      state.value = action.payload;
+export const loadingStatusSlice = createSlice({
+  name: 'loadingStatus',
+  initialState: { isRefreshing: false },
+  extraReducers: {
+    [refresh.pending](state) {
+      state.isRefreshing = true;
+    },
+    [refresh.fulfilled](state) {
+      state.isRefreshing = false;
+    },
+    [refresh.rejected](state) {
+      state.isRefreshing = false;
     },
   },
 });
-
-export const { setFilter } = filterSlice.actions;
