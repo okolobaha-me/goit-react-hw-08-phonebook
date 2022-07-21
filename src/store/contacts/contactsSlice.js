@@ -14,6 +14,7 @@ export const contactsSlice = createApi({
     },
   }),
   tagTypes: ['Contacts'],
+  keepUnusedDataFor: 1,
   endpoints: builder => ({
     getContacts: builder.query({
       query: () => '/contacts',

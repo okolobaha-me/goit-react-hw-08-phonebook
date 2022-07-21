@@ -6,14 +6,17 @@ import { NoContactsWarn } from '../../Pages/Contacts/Contacts.styled';
 import { Contacts } from './ContactList.styled';
 import { Filter } from '../Form/FormInputs/Filter';
 import { getFilter } from '../../store/filter/filtersSelectors';
+import { Loader } from '../Loader/Loader';
 
 export const ContactsList = () => {
-  const { data: contacts = [] } = useGetContactsQuery();
+  const { data: contacts = [], status } = useGetContactsQuery();
   const visibleContacts = useSelector(state =>
     getVisibleContacts(state, contacts)
   );
 
   const filter = useSelector(getFilter);
+
+  if (status === 'pending') return <Loader />;
 
   return (
     <>
